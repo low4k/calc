@@ -1,28 +1,97 @@
-# WASM Calculus Engine
+# Calc
 
-This repository is being scaffolded as a Rust-first calculus visualization engine with a TypeScript frontend.
+Calc is a Rust-first calculus and graphing playground with a WebAssembly bridge and a TypeScript frontend.
 
-Current status:
-- Repository folders created
-- Architecture baseline documented
-- Detailed implementation plan documented
+The Rust side owns parsing, evaluation, sampling, Taylor series generation, Riemann geometry, and disk-method mesh generation. The frontend focuses on interaction and visualization while delegating math-heavy work to the WASM engine.
 
-Primary planning docs:
-- docs/implementation-plan.md
-- docs/folder-structure.md
-- docs/adr/0001-architecture-baseline.md
+## Features
 
-Planned top-level structure:
-- crates/calc-core: pure Rust math engine
-- crates/calc-wasm: wasm-bindgen bridge
-- frontend: Vite + TypeScript UI and renderers
-- docs: architecture, validation, and milestone docs
-- scripts: local build and packaging helpers
-- examples: future sample functions and demo presets
+- Graphing calculator UI with live expression parsing
+- Explicit curve sampling and relation-grid generation
+- Riemann sum geometry with approximation and error summaries
+- Taylor series coefficients plus sampled comparison curves
+- Disk-method revolution meshes with bounds and metadata
+- Error-series visualization for convergence inspection
+- Rust tests covering parser, evaluator, graphing, Riemann, Taylor, revolution, and WASM packing helpers
 
-Immediate next implementation order:
-1. Create the Rust workspace manifests
-2. Implement shared engine types and error model
-3. Build the expression parser and evaluator
-4. Add Riemann geometry generation and tests
-5. Add WASM buffer exports and frontend integration
+## Stack
+
+- Rust workspace for the core math engine and WASM wrapper
+- wasm-bindgen for the browser bridge
+- Vite + TypeScript frontend
+- MathLive input and Three.js-based 3D rendering in the UI
+
+## Quick Start
+
+### Prerequisites
+
+- Rust toolchain
+- wasm-pack
+- Node.js and npm
+
+### Run locally
+
+The fastest path is the helper script from the repository root:
+
+```bash
+./run.sh
+```
+
+That script:
+
+- builds the WASM package into `frontend/public/pkg`
+- installs frontend dependencies if needed
+- starts the Vite dev server
+- opens the app in your browser when possible
+
+### Manual workflow
+
+```bash
+cd crates/calc-wasm
+wasm-pack build --target web --out-dir ../../frontend/public/pkg
+
+cd ../../frontend
+npm install
+npm run dev
+```
+
+## Build And Test
+
+Run the Rust test suites from the repository root:
+
+```bash
+cargo test
+```
+
+Build the frontend:
+
+```bash
+cd frontend
+npm run build
+```
+
+If you rebuild the frontend from scratch, regenerate the WASM package first:
+
+```bash
+cd crates/calc-wasm
+wasm-pack build --target web --out-dir ../../frontend/public/pkg
+```
+
+## Project Layout
+
+- `crates/calc-core` - pure Rust parser, evaluator, graphing, sampling, Riemann, Taylor, and revolution logic
+- `crates/calc-wasm` - WASM-facing wrapper and flat buffer exports for the frontend
+- `frontend` - Vite application, UI panels, 2D graphing, and 3D rendering
+- `docs` - architecture notes, validation guidance, and implementation planning
+- `run.sh` - local development entry point
+
+## Docs
+
+- `docs/implementation-plan.md`
+- `docs/folder-structure.md`
+- `docs/adr/0001-architecture-baseline.md`
+- `docs/math-validation.md`
+
+## Status
+
+This repository is already beyond the initial scaffold stage. The core Rust engine, the WASM bridge, and the interactive frontend are all present and wired together.
