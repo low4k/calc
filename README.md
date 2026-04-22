@@ -77,21 +77,6 @@ cd crates/calc-wasm
 wasm-pack build --target web --out-dir ../../frontend/public/pkg
 ```
 
-## Project Layout
-
-- `crates/calc-core` - pure Rust parser, evaluator, graphing, sampling, Riemann, Taylor, and revolution logic
-- `crates/calc-wasm` - WASM-facing wrapper and flat buffer exports for the frontend
-- `frontend` - Vite application, UI panels, 2D graphing, and 3D rendering
-- `docs` - architecture notes, validation guidance, and implementation planning
-- `run.sh` - local development entry point
-
-## Docs
-
-- `docs/implementation-plan.md`
-- `docs/folder-structure.md`
-- `docs/adr/0001-architecture-baseline.md`
-- `docs/math-validation.md`
-
 ## Status
 
 This repository is already beyond the initial scaffold stage. The core Rust engine, the WASM bridge, and the interactive frontend are all present and wired together.
