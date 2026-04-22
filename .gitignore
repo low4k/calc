@@ -1,0 +1,6 @@
+target/
+node_modules/
+dist/
+pkg/
+frontend/.vite/
+.DS_Store
