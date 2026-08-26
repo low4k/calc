@@ -73,7 +73,7 @@ export function createFunctionInput(
 
   const intro = document.createElement('p');
   intro.className = 'panel-copy';
-  intro.textContent = 'Type expressions like a graphing calculator. Type “int” for a cumulative integral ∫₀ˣ f(t) dt, “sum” for Σₙ₌₁ˣ f(n), or “prod” for Π f(n). Expressions that depend on x drive the Riemann, Taylor, and revolution panels automatically.';
+  intro.textContent = 'Type expressions like a graphing calculator. Type "int" for a cumulative integral ∫₀ˣ f(t) dt, "sum" for Σₙ₌₁ˣ f(n), or "prod" for Π f(n). Expressions that depend on x drive the Riemann, Taylor, and revolution panels automatically.';
 
   const layout = document.createElement('div');
   layout.className = 'graphing-layout';
@@ -120,7 +120,7 @@ export function createFunctionInput(
 
   const backendStatus = document.createElement('p');
   backendStatus.className = 'panel-copy backend-status';
-  backendStatus.textContent = 'Type “int”, “sum”, or “prod” to insert a calculus expression, or pick one from the examples above. Explicit functions of x automatically drive the Riemann, Taylor, revolution, and error panels below.';
+  backendStatus.textContent = 'Type "int", "sum", or "prod" to insert a calculus expression, or pick one from the examples above. Explicit functions of x automatically drive the Riemann, Taylor, revolution, and error panels below.';
 
   const translated = document.createElement('p');
   translated.className = 'panel-copy engine-preview';

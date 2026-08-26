@@ -305,7 +305,7 @@ function sanitizeLatex(latex: string): string {
     .replace(/\\;/g, ' ')
     .replace(/\\quad/g, ' ')
     .replace(/\\qquad/g, ' ');
-  // Note: whitespace is NOT collapsed here — the tokenizer skips it, which
+  // Note: whitespace is NOT collapsed here - the tokenizer skips it, which
   // lets "t dt" tokenize as two separate identifiers instead of "tdt".
 }
 
@@ -945,7 +945,7 @@ function tokenize(source: string): Token[] {
     const char = source[index];
 
     // Whitespace is a word separator (left by sanitizeLatex for spacing commands
-    // like \, and \!) — skip it silently so "t dt" stays two tokens.
+    // like \, and \!) - skip it silently so "t dt" stays two tokens.
     if (/\s/.test(char)) {
       index += 1;
       continue;
